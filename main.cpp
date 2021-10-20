@@ -100,6 +100,7 @@ int main()
 			std::cout << "Stop? 1. [C] - Continue 2. [N] - Continue dont show prompt 3. [S] - Stop\n";
 			std::string input;
 			std::cin >> input;
+			last_cancellation_prompt_time = std::chrono::system_clock::now();
 			if (input[0] == 'N')
 			{
 				prompt_to_cancell_avaliable = false;
@@ -112,7 +113,6 @@ int main()
 			{
 				last_cancellation_prompt_time -= std::chrono::seconds(5);
 			}
-			last_cancellation_prompt_time = std::chrono::system_clock::now();
 		}
 		if (!trial_f_result){
 			// std::cout << "Got f:"  << std::endl;
