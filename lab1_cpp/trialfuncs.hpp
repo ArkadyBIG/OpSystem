@@ -38,7 +38,7 @@ namespace os::lab1::compfuncs {
 	    std::condition_variable cv;
 	    std::mutex m;
 	    std::unique_lock<std::mutex> lock(m);
-	    cv.wait(lock, []{return true;});
+	    cv.wait(lock, []{return false;});
 	    return {};
 	}
     }
@@ -86,7 +86,6 @@ namespace os::lab1::compfuncs {
 
     template<op_group O> 
     typename op_group_traits<O>::result_type trial_f(int case_nr) {
-    std::cout << "Here" << (bool)op_group_trial_traits<O>::cases[case_nr].f_attrs << std::endl;
 	return gen_func<typename op_group_traits<O>::value_type>(op_group_trial_traits<O>::cases[case_nr].f_attrs);
     }
 
